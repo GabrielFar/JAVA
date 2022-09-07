@@ -13,12 +13,12 @@ public class L1E4 {
 			double altura = -1;
 			double pesoIdeal;
 		
-			System.out.println("Insira seu Gênero (M/F)");
+			System.out.println("Insira seu Sexo (M/F)");
 			sexo = tc.next().charAt(0);
 			
 			while (sexo != 'm' && sexo != 'M' && sexo != 'f' && sexo != 'F') {
 				System.out.println();
-				System.out.println("Gênero Inválido! Insira Novamente");
+				System.out.println("Sexo Inválido! Insira Novamente");
 				sexo = tc.next().charAt(0);
 			}
 			

@@ -36,7 +36,7 @@ public class L1E3 {
 			imc = peso/(altura*altura);
 			System.out.println("IMC: " + imc);
 			
-			if (imc >= 16 && imc < 17) {
+			if (imc < 17) {
 				System.out.println("Muito abaixo do peso");
 				
 			} else if (imc >= 17 && imc < 18.5){

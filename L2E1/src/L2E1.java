@@ -15,6 +15,7 @@ public class L2E1 {
 			int indexador = 0;
 			int diaComparado;
 			double media;
+			char compararMais = 's';
 			
 			System.out.println("Quantas Temperaturas Você Deseja Digitar?");
 			quantidadeTemp = tc.nextInt();
@@ -33,18 +34,25 @@ public class L2E1 {
 			
 			media = calcularMedia(temps);
 			
-			System.out.println();
-			System.out.print("Digite um Dia para ser Comparado: ");
-			diaComparado = tc.nextInt();
+			while(compararMais == 's' ||compararMais == 'S') {
 			
-			while(diaComparado > temps.length) {
-				System.out.println("Dia Não Cadastrdo! Tente Novamente");
+				System.out.println();
 				System.out.print("Digite um Dia para ser Comparado: ");
 				diaComparado = tc.nextInt();
+				
+				while(diaComparado > temps.length) {
+					System.out.println("Dia Não Cadastrdo! Tente Novamente");
+					System.out.print("Digite um Dia para ser Comparado: ");
+					diaComparado = tc.nextInt();
+				}
+				
+				System.out.println("A Temperatura do Dia " + diaComparado + " (" + temps[(diaComparado - 1)] + ")" +
+						" é " + compararTemperaturas(media, diaComparado, temps) + " à Média (" + media +")");
+				
+				System.out.println();
+				System.out.println("Deseja Consultar Outro Dia?(s/n)");
+				compararMais = tc.next().charAt(0);
 			}
-			
-			System.out.println("A Temperatura do Dia " + diaComparado + " (" + temps[(diaComparado - 1)] + ")" +
-					" é " + compararTemperaturas(media, diaComparado, temps) + " à Média (" + media +")");
 			
 			System.out.println();
 			System.out.println("Deseja sair do Programa? (s/n)");

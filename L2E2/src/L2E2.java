@@ -12,14 +12,10 @@ public class L2E2 {
 			
 			int qntdNums;
 			int[] sequenciaFibonacci;
-			int numsGerados = 0;
-			int novoNum;
-			int ultimoNum = 1;
-			int penultimoNum = 0;
 			
 			System.out.println("Quantos Números da Sequência de Fibonacci Você Deseja Ver?");
 			qntdNums = tc.nextInt();
-			sequenciaFibonacci = new int[qntdNums];
+			sequenciaFibonacci = new int[qntdNums];			
 			
 			while(qntdNums <= 0) {
 				System.out.println("Quantidade Impossível! Tente Novamente");
@@ -28,21 +24,19 @@ public class L2E2 {
 			}
 			
 			sequenciaFibonacci[0] = 1;
-			
-			while (qntdNums - 1 > numsGerados) {
-				novoNum = ultimoNum + penultimoNum;
-				penultimoNum = ultimoNum;
-				ultimoNum = novoNum;
-					
-				sequenciaFibonacci[numsGerados + 1] = novoNum;
-				numsGerados++;
+			sequenciaFibonacci[1] = 1;
+						
+			for (int i = 2; i < sequenciaFibonacci.length; i++) {
+				sequenciaFibonacci[i] = sequenciaFibonacci[i - 1] + sequenciaFibonacci[i - 2];
 			}
+			
 			System.out.println();
 			System.out.println("Sequência Fibonacci");
 			
 			for (int i = 0; i < sequenciaFibonacci.length; i++) {
-				System.out.println(i + " - " + sequenciaFibonacci[i]);
+				System.out.println(sequenciaFibonacci[i]);
 			}
+			
 			System.out.println();
 			System.out.println("Deseja sair do Programa? (s/n)");
 			sair = tc.next().charAt(0);

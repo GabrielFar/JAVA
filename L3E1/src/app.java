@@ -9,6 +9,7 @@ public class app {
 		char sair = 'n';
 		
 		Calculadora calculadora = new Calculadora();
+		double resul = 0;
 		
 		System.out.println("Calculadora");
 		
@@ -39,35 +40,37 @@ public class app {
 				System.out.println("Digite os Números para a Operação:");
 				num1 = tc.nextDouble();
 				num2 = tc.nextDouble();
+				resul = calculadora.somar(num1, num2);
 				System.out.println();
-				System.out.println("Resultado: " + calculadora.somar(num1, num2));
+				System.out.println("Resultado: " + resul);
 				
 			} else if (operacao == '-'){
 				System.out.println("Digite os Números para a Operação:");
 				num1 = tc.nextDouble();
 				num2 = tc.nextDouble();
+				resul = calculadora.subtrair(num1, num2);
 				System.out.println();
-				System.out.println("Resultado: " + calculadora.subtrair(num1, num2));
+				System.out.println("Resultado: " + resul);
 				
 			} else if (operacao == '*'){
 				System.out.println("Digite os Números para a Operação:");
 				num1 = tc.nextDouble();
 				num2 = tc.nextDouble();
+				resul = calculadora.multiplicar(num1, num2);
 				System.out.println();
-				System.out.println("Resultado: " + calculadora.multiplicar(num1, num2));
+				System.out.println("Resultado: " + resul);
 				
 			} else if (operacao == '/'){
 				System.out.println("Digite os Números para a Operação:");
 				num1 = tc.nextDouble();
 				num2 = tc.nextDouble();
+				resul = calculadora.dividir(num1, num2);
 				System.out.println();
-				System.out.println("Resultado: " + calculadora.dividir(num1, num2));
+				System.out.println("Resultado: " + resul);
 				
 			} else if (operacao == 'm' || operacao == 'M'){
-				System.out.println("Digite o Número para a Operação:");
-				num1 = tc.nextDouble();
-				System.out.println();
-				calculadora.addMemoria(num1);
+				System.out.println("Adicionado à Menmória");
+				calculadora.addMemoria(resul);
 				
 			} else if (operacao == 'c' || operacao == 'C'){
 				calculadora.clrMemoria();

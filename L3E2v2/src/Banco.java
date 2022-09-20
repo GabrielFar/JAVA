@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import Exceptions.cpfNaoCadastradoException;
+
 public class Banco {
 		
 	private String nome;
@@ -18,13 +20,13 @@ public class Banco {
 		this.clientes = new Cliente[0];
 	}
 	
-	public Cliente getCliente(String cpf) {
+	public Cliente getCliente(String cpf) throws cpfNaoCadastradoException {
 		for (int i = 0; i < clientes.length; i++) {
 			if (cpf.equals(clientes[i].getCpf())) {
 				return clientes[i];
 			}
 		}
-		return null;
+		throw new cpfNaoCadastradoException("CPF não Cadastrado");
 	}
 	
 	public String addCliente(Cliente cliente) {

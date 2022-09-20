@@ -74,13 +74,9 @@ public class app {
 				System.out.println("Digite o CPF do Cliente");
 				cpf = tc.next();
 				
-				Cliente cliente = banco.getCliente(cpf);
-				
-				if (banco.getCliente(cpf) == null) {
-					System.out.println("CPF Não Cadastrado");
-					
-				} else {
-					
+				try {
+					Cliente cliente = banco.getCliente(cpf);
+
 					int id;
 					System.out.println("Digite o Id do Endereço");
 					id = tc.nextInt();
@@ -112,8 +108,11 @@ public class app {
 					Endereco endereco = new Endereco(id, cep, rua, numero, bairro, cidade, uf);
 					
 					cliente.setEndereco(endereco);
-				}				
-				
+					
+				} catch (Exception e) {
+					System.err.println(e.getMessage());
+				}
+								
 			} else if(operacao == '2'){//Cadastrar Cliente	
 				String nome;
 				System.out.println("Digite o Nome do Cliente");
@@ -136,12 +135,9 @@ public class app {
 				System.out.println("Digite o CPF do Cliente");
 				cpf = tc.next();
 				
-				Cliente cliente = banco.getCliente(cpf);
-				
-				if (cliente == null) {
-					System.out.println("CPF Não Cadastrado");
+				try {
+					Cliente cliente = banco.getCliente(cpf);
 					
-				} else {
 					String numConta;
 					System.out.println("Digite o Número da Conta");
 					numConta = tc.next();
@@ -161,7 +157,11 @@ public class app {
 					tipoConta = tc.next().charAt(0);
 					
 					cliente.abrirConta(numConta, saldo, limite, senha, tipoConta);
-				}
+					
+				} catch (Exception e) {
+					System.err.println(e.getMessage());
+				}			
+					
 				
 			} else if(operacao == '9'){//Sair do Menu Gerencial
 				sairMenu = 's';
@@ -197,15 +197,19 @@ public class app {
 				System.out.println("Digite o CPF do Cliente");
 				cpf = tc.next();
 				
-				if (banco.getCliente(cpf) == null) {
-					System.out.println("CPF Não Cadastrado");
-					
-				} else {
+				try {
 					double deposito;
 					System.out.println("Digite a Quantidade a Ser Depositada");
 					deposito = tc.nextDouble();
 					
-					System.out.println(banco.getCliente(cpf).getConta().depositar(deposito)); 
+					try {
+						banco.getCliente(cpf).getConta().depositar(deposito);
+					
+					} catch (Exception e) {
+						System.err.println(e.getMessage());
+					}
+				} catch (Exception e) {
+					System.err.println(e.getMessage());
 				}
 				
 			} else if(operacao == '2'){// Saque
@@ -215,17 +219,22 @@ public class app {
 				System.out.println("Digite o CPF do Cliente");
 				cpf = tc.next();
 				
-				if (banco.getCliente(cpf) == null) {
-					System.out.println("CPF Não Cadastrado");
-					
-				} else {					
+				try {
 					double saque;
 					System.out.println("Digite a Quantidade a Ser Sacada");
 					saque = tc.nextDouble();
 					
-					System.out.println(banco.getCliente(cpf).getConta().sacar(saque));
+					try {
+						banco.getCliente(cpf).getConta().sacar(saque);
+						
+					} catch (Exception e) {
+						System.err.println(e.getMessage());
+					}
+					
+				} catch (Exception e) {
+					System.err.println(e.getMessage());
 				}
-												
+																
 				
 			} else if(operacao == '3'){// Saldo
 				System.out.println();
@@ -233,13 +242,13 @@ public class app {
 				String cpf;
 				System.out.println("Digite o CPF do Cliente");
 				cpf = tc.next();
-								
-				if (banco.getCliente(cpf) == null) {
-					System.out.println("CPF Não Cadastrado");
-					
-				} else {					
+				
+				try {
 					System.out.println(banco.getCliente(cpf).getConta().getSaldo());
+				} catch (Exception e) {
+					System.err.println(e.getMessage());
 				}
+
 				
 			} else if(operacao == '9'){// Sair do Caixa Eletronico
 				sairCaixa = 's';
